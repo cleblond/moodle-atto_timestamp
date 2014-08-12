@@ -1,0 +1,10 @@
+{
+    "name": "moodle-atto_timestamp-button",
+    "builds": {
+        "moodle-atto_timestamp-button": {
+            "jsfiles": [
+                "button.js"
+            ]
+        }
+    }
+}

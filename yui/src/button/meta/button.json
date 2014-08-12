@@ -1,0 +1,8 @@
+{
+    "moodle-atto_timestamp-button": {
+        "requires": [
+            "moodle-editor_atto-plugin",
+            "datatype-date"
+        ]
+    }
+}
