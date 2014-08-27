@@ -35,29 +35,17 @@ YUI.add('moodle-atto_timestamp-button', function (Y, NAME) {
 
 var COMPONENTNAME = 'atto_timestamp';
 var FLAVORCONTROL = 'timestamp_flavor';
-var LOGNAME = 'atto_timestamp';
-//var date1='';
-
-
-
-
-
-
 var CSS = {
         INPUTSUBMIT: 'atto_media_urlentrysubmit',
         INPUTCANCEL: 'atto_media_urlentrycancel',
         FLAVORCONTROL: 'flavorcontrol'
-    },
-    SELECTORS = {
-        FLAVORCONTROL: '.flavorcontrol'
     };
 
 var TEMPLATE = '' +
     '<form class="atto_form">' +
         '<div id="{{elementid}}_{{innerform}}" class="mdl-left">' +
             '<label for="{{elementid}}_{{FLAVORCONTROL}}">{{get_string "enterflavor" component}}</label>' +
-         //   '<input class="{{CSS.FLAVORCONTROL}} id="{{elementid}}_{{FLAVORCONTROL}}" name="{{elementid}}_{{FLAVORCONTROL}}" value="{{defaultflavor}}" />' +
-            '<input type="radio" name="format" value="date1">{{date1}}<br>' +
+            '<input type="radio" name="format" value="date1" checked>{{date1}}<br>' +
             '<input type="radio" name="format" value="date2">{{date2}}<br>' +
             '<input type="radio" name="format" value="date3">{{date3}}<br>' +
             '<input type="radio" name="format" value="date4">{{date4}}<br>' +
@@ -70,7 +58,7 @@ var TEMPLATE = '' +
 Y.namespace('M.atto_timestamp').Button = Y.Base.create('button', Y.M.editor_atto.EditorPlugin, [], {
 
   
-	/**
+    /**
      * Initialize the button
      *
      * @method Initializer
@@ -80,21 +68,6 @@ Y.namespace('M.atto_timestamp').Button = Y.Base.create('button', Y.M.editor_atto
         if (this.get('disabled')){
             return;
         }
-
-/*
-               YUI().use('datatype-date', function (Y, content) {
-    // DataType is available and ready for use. Add implementation
-    // code here.
-
-        content.one("#date1").setContent(new Date(), {format:"%m/%d/%y %l:%m:%S %p"})
-//        Y.one("#date1").set("text", output.nodeName);
-        });
-*/
-
-
-        //var twoicons = ['iconone', 'icontwo'];
-
-        
             // Add the timestamp icon/buttons
             this.addButton({
                 icon: 'clock',
@@ -134,8 +107,8 @@ Y.namespace('M.atto_timestamp').Button = Y.Base.create('button', Y.M.editor_atto
             width: width + 'px',
             focusAfterHide: clickedicon
         });
-		//dialog doesn't detect changes in width without this
-		//if you reuse the dialog, this seems necessary
+        //dialog doesn't detect changes in width without this
+        //if you reuse the dialog, this seems necessary
         if(dialogue.width !== width + 'px'){
             dialogue.set('width',width+'px');
         }
@@ -161,7 +134,7 @@ Y.namespace('M.atto_timestamp').Button = Y.Base.create('button', Y.M.editor_atto
      * @return {Node} The content to place in the dialogue.
      * @private
      */
-    _getFormContent: function(clickedicon, date1) {
+    _getFormContent: function(clickedicon) {
         //var date1 = ''
         var template = Y.Handlebars.compile(TEMPLATE),
             content = Y.Node.create(template({
@@ -194,44 +167,28 @@ Y.namespace('M.atto_timestamp').Button = Y.Base.create('button', Y.M.editor_atto
             focusAfterHide: null
         }).hide();
 
-        var flavorcontrol = this._form.one(SELECTORS.FLAVORCONTROL);
-
-        // If no file is there to insert, don't do it.
-        //if (!flavorcontrol.get('value')){
-        //    return;
-        //}
-
-       // YUI().use('datatype-date', function (Y) {
-    // DataType is available and ready for use. Add implementation
-    // code here.
-
         var value = Y.one("input[name=format]:checked").get("value");
         console.log(value);
-		switch (value) {
-		    case "date1":
-			format = Y.Date.format(new Date(), {format:"%m/%d/%y %l:%m:%S %p"});
-			break;
-		    case "date2":
-			format = Y.Date.format(new Date(), {format:"%m/%d/%y"});
-			break;
-		    case "date3":
-			format = Y.Date.format(new Date(), {format:"%Y/%m/%d"});
-			break;
-		    case "date4":
-			format = Y.Date.format(new Date(), {format:"%l:%M:%S %p"});
-			break;
-		    case "date5":
-			format = Y.Date.format(new Date(), {format:"%H:%M:%S"});
-			break;
-		    case "date6":
-			format = Y.Date.format(new Date(), {format:"%x %X"});
-			break;
-		} 
-
-        
-
-        //});
-
+        switch (value) {
+            case "date1":
+            format = Y.Date.format(new Date(), {format:"%m/%d/%y %l:%m:%S %p"});
+            break;
+            case "date2":
+            format = Y.Date.format(new Date(), {format:"%m/%d/%y"});
+            break;
+            case "date3":
+            format = Y.Date.format(new Date(), {format:"%Y/%m/%d"});
+            break;
+            case "date4":
+            format = Y.Date.format(new Date(), {format:"%l:%M:%S %p"});
+            break;
+            case "date5":
+            format = Y.Date.format(new Date(), {format:"%H:%M:%S"});
+            break;
+            case "date6":
+            format = Y.Date.format(new Date(), {format:"%x %X"});
+            break;
+        }
 
 
         this.editor.focus();
@@ -241,18 +198,18 @@ Y.namespace('M.atto_timestamp').Button = Y.Base.create('button', Y.M.editor_atto
 
     }
 }, { ATTRS: {
-		disabled: {
-			value: false
-		},
+        disabled: {
+            value: false
+        },
 
-		usercontextid: {
-			value: null
-		},
+        usercontextid: {
+            value: null
+        },
 
-		defaultflavor: {
-			value: ''
-		}
-	}
+        defaultflavor: {
+            value: ''
+        }
+    }
 });
 
 
