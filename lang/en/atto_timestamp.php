@@ -31,5 +31,5 @@ $string['nothingtoinsert'] = 'Nothing to insert!';
 $string['dialogtitle'] = 'Enter Timestamp';
 $string['insert'] = 'Insert';
 $string['cancel'] = 'Cancel';
-$string['enterflavor'] = 'Choose timestamp format';
+$string['enterflavor'] = 'Date/Time';
 $string['defaultflavor'] = 'Default Ice Cream Flavor';

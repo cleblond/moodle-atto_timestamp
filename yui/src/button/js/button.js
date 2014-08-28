@@ -42,13 +42,15 @@ var CSS = {
 var TEMPLATE = '' +
     '<form class="atto_form">' +
         '<div id="{{elementid}}_{{innerform}}" class="mdl-left">' +
-            '<label for="{{elementid}}_{{FLAVORCONTROL}}">{{get_string "enterflavor" component}}</label>' +
+            '<label for="{{elementid}}_{{FLAVORCONTROL}}"><strong>{{get_string "enterflavor" component}}</strong></label>' +
             '<input type="radio" name="format" value="date1" checked>{{date1}}<br>' +
-            '<input type="radio" name="format" value="date2">{{date2}}<br>' +
-            '<input type="radio" name="format" value="date3">{{date3}}<br>' +
+            '<input type="radio" name="format" value="date1">{{date6}}<br>' +
+            '<p><strong>Time</strong></p>' +
             '<input type="radio" name="format" value="date4">{{date4}}<br>' +
             '<input type="radio" name="format" value="date5">{{date5}}<br>' +
-            '<input type="radio" name="format" value="date6">{{date6}}<br><br>' +
+            '<p><strong>Date</strong></p>' +
+            '<input type="radio" name="format" value="date2">{{date2}}<br>' +
+            '<input type="radio" name="format" value="date3">{{date3}}<br><br>' +
             '<button class="{{CSS.INPUTSUBMIT}}">{{get_string "insert" component}}</button>' +
         '</div>' +
     '</form>';
@@ -97,7 +99,7 @@ Y.namespace('M.atto_timestamp').Button = Y.Base.create('button', Y.M.editor_atto
      */
     _displayDialogue: function(e, clickedicon, date1) {
         e.preventDefault();
-        var width=250;
+        var width=300;
 
 
         var dialogue = this.getDialogue({
@@ -142,12 +144,12 @@ Y.namespace('M.atto_timestamp').Button = Y.Base.create('button', Y.M.editor_atto
                 component: COMPONENTNAME,
                 defaultflavor: this.get('defaultflavor'),
                 clickedicon: clickedicon,
-                date1: Y.Date.format(new Date(), {format:"%m/%d/%y %l:%m:%S %p"}),
+                date1: Y.Date.format(new Date(), {format:"%x %X"}),
                 date2: Y.Date.format(new Date(), {format:"%m/%d/%y"}),
                 date3: Y.Date.format(new Date(), {format:"%Y/%m/%d"}),
                 date4: Y.Date.format(new Date(), {format:"%l:%M:%S %p"}),
                 date5: Y.Date.format(new Date(), {format:"%H:%M:%S"}),
-                date6: Y.Date.format(new Date(), {format:"%x %X"})
+                date6: Y.Date.format(new Date(), {format:"%Y/%m/%d %X"})
             }));
         this._form = content;
         this._form.one('.' + CSS.INPUTSUBMIT).on('click', this._doInsert, this);
