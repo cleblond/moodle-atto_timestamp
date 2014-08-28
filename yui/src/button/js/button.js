@@ -44,7 +44,7 @@ var TEMPLATE = '' +
         '<div id="{{elementid}}_{{innerform}}" class="mdl-left">' +
             '<label for="{{elementid}}_{{FLAVORCONTROL}}"><strong>{{get_string "enterflavor" component}}</strong></label>' +
             '<input type="radio" name="format" value="date1" checked>{{date1}}<br>' +
-            '<input type="radio" name="format" value="date1">{{date6}}<br>' +
+            '<input type="radio" name="format" value="date6">{{date6}}<br>' +
             '<p><strong>Time</strong></p>' +
             '<input type="radio" name="format" value="date4">{{date4}}<br>' +
             '<input type="radio" name="format" value="date5">{{date5}}<br>' +
@@ -171,7 +171,7 @@ Y.namespace('M.atto_timestamp').Button = Y.Base.create('button', Y.M.editor_atto
         console.log(value);
         switch (value) {
             case "date1":
-            format = Y.Date.format(new Date(), {format:"%m/%d/%y %l:%m:%S %p"});
+            format = Y.Date.format(new Date(), {format:"%x %l:%m:%S %p"});
             break;
             case "date2":
             format = Y.Date.format(new Date(), {format:"%m/%d/%y"});
@@ -186,7 +186,7 @@ Y.namespace('M.atto_timestamp').Button = Y.Base.create('button', Y.M.editor_atto
             format = Y.Date.format(new Date(), {format:"%H:%M:%S"});
             break;
             case "date6":
-            format = Y.Date.format(new Date(), {format:"%x %X"});
+            format = Y.Date.format(new Date(), {format:"%Y/%m/%d %X"});
             break;
         }
 
