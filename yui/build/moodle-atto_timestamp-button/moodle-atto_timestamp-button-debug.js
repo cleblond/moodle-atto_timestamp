@@ -173,7 +173,7 @@ Y.namespace('M.atto_timestamp').Button = Y.Base.create('button', Y.M.editor_atto
         console.log(value);
         switch (value) {
             case "date1":
-            format = Y.Date.format(new Date(), {format:"%x %l:%m:%S %p"});
+            format = Y.Date.format(new Date(), {format:"%x %l:%M:%S %p"});
             break;
             case "date2":
             format = Y.Date.format(new Date(), {format:"%m/%d/%y"});
@@ -192,7 +192,7 @@ Y.namespace('M.atto_timestamp').Button = Y.Base.create('button', Y.M.editor_atto
             break;
         }
 
-        Y.log(Y.Date.format(new Date(), {format:"%m/%d/%y %l:%m:%S %p"}));
+        Y.log(Y.Date.format(new Date(), {format:"%m/%d/%y %l:%M:%S %p"}));
         Y.log(Y.Date.format(new Date(), {format:"%m/%d/%y"}));
         Y.log(Y.Date.format(new Date(), {format:"%Y/%m/%d"}));
         Y.log(Y.Date.format(new Date(), {format:"%l:%M:%S %p"}));
